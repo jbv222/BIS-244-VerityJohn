@@ -1,2 +1,2 @@
-# BIS-244-VerityJohn
+# BIS-244-verityjohn
 Student Account for BIS 244
