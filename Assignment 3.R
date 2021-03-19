@@ -49,7 +49,7 @@ COUNTS2 <- summarise(RESULTS, votes = sum(votes))
 p <- ggplot(data=COUNTS2,
             mapping=aes(x=state,
                         y=votes,
-                        color=cand_cons))
+                        color=CAND_CONS))
 p <- p +geom_point()
 p<- +labs(x= "Name of State",
           y="# of votes",
