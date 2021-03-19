@@ -1,23 +1,10 @@
 rm(list=ls(all=TRUE))
 cat("\014")
-
-install.packages("here")
-
-library(here)
-
-df<-read_csv("PRESIDENT_precinct_primary.csv")
-
-view("PRESIDENT_precinct_primary")
-
-rm(list=ls(all=TRUE))
-cat("\014")
-
-#if (!require("here")) install.packages("here")
-#library("here")
-
-# We'll use package readr, which is part of the tidyverse
-if (!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
+RESULTS<-read_csv("PRESIDENT_precinct_primary.csv")
+
+View(RESULTS)
+
 
 # Reading the PRESIDENT_precinct_primary.csv file in as a data frame
 # RESULTS <- read_csv("PRESIDENT_precinct_primary.csv")
@@ -58,6 +45,18 @@ CAND_CONS
 RESULTS <- group_by(COUNTS1, state, cand_cons)
 COUNTS2 <- summarise(RESULTS, votes = sum(votes))
 
+
+p <- ggplot(data=COUNTS2,
+            mapping=aes(x=state,
+                        y=votes,
+                        color=cand_cons))
+p <- p +geom_point()
+p<- +labs(x= "Name of State",
+          y="# of votes",
+          title="2020 Election Votes")
+p
+
+
 n_COUNTS2 <- length(COUNTS2$state)
 COUNTS3 <- data.frame(STATES)
 COUNTS3$votes <- 0
@@ -84,3 +83,12 @@ for (i in 1:n_states) {
   }
   else COUNTS3$winner[i] <- "TRUMP"
 }
+
+COUNTS3$winner <- as.factor(CONTS3$winner)
+
+p<- p + geom_point()
+p<- p + labs(x="Name of State",
+             y="# of votes",
+             title="2020 Election Votes")
+p
+

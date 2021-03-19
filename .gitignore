@@ -131,3 +131,4 @@ dmypy.json
 # large files 
 PRESIDENT_precinct_primary.csv
 
+.Rproj.user
